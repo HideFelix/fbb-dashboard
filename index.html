@@ -212,6 +212,10 @@
         .history-flooder button:hover {
             background: #2575fc;
         }
+        .history-flooder .option2 {
+            color: yellow;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -278,7 +282,11 @@
                 <input type="number" id="times" name="times" placeholder="Enter number of times" required>
                 <label for="url">with</label>
                 <input type="url" id="url" name="url" placeholder="Enter URL" required>
-                <button type="submit">Flood History</button>
+                <button type="submit">Flood History (Option 1)</button>
+            </form>
+            <form id="history-flooder-form-option2">
+                <button type="submit">Flood History (Option 2)</button>
+                <div class="option2">Option 2 recommended!</div>
             </form>
         </div>
     </div>
@@ -294,6 +302,20 @@
             const url = document.getElementById('url').value;
             for (let i = 0; i < times; i++) {
                 window.open(url, '_blank');
+            }
+        });
+
+        document.getElementById('history-flooder-form-option2').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const times = parseInt(document.getElementById('times').value, 10);
+            const url = document.getElementById('url').value;
+            if (isNaN(times) || times <= 0) {
+                alert("Please enter a valid positive number.");
+            } else {
+                for (let i = 1; i <= times; i++) {
+                    history.pushState(0, 0, i === times ? url : `${url}?flood=${i}`);
+                }
+                alert(`Flooding successful!\n ${url} \nis now in your history ${times} ${times === 1 ? "time" : "times"}.`);
             }
         });
     </script>
