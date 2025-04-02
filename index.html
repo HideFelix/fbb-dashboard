@@ -174,21 +174,57 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             transform: translateY(-5px);
         }
+        /* History Flooder Styles */
+        .history-flooder {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 20px;
+            background: #2a2a3d;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .history-flooder h1 {
+            margin-bottom: 20px;
+        }
+        .history-flooder form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .history-flooder input {
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .history-flooder button {
+            padding: 10px 20px;
+            background: #6a11cb;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .history-flooder button:hover {
+            background: #2575fc;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
-            <h2 class="gradient-animation">
-                <span class="cascade-animation">F</span>
-                <span class="cascade-animation">B</span>
-                <span class="cascade-animation">B</span>
+            <h2>
+                <span class="gradient-animation cascade-animation">FBB</span>
                 <div class="subtext">Felix's Boredom Bookmarklet</div>
             </h2>
             <ul class="nav">
-                <li><a href="javascript:void(0);"><svg><!-- icon --></svg> Dashboard</a></li>
-                <li><a href="javascript:void(0);"><svg><!-- icon --></svg> Placeholder 2</a></li>
+                <li><a href="https://hidefelix.github.io/fbb-dashboard/"><svg><!-- icon --></svg> Dashboard</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('history-flooder')"><svg><!-- icon --></svg> History Flooder</a></li>
                 <li><a href="javascript:void(0);"><svg><!-- icon --></svg> Placeholder 3</a></li>
                 <li><a href="javascript:void(0);"><svg><!-- icon --></svg> Placeholder 4</a></li>
                 <li><a href="javascript:void(0);"><svg><!-- icon --></svg> Placeholder 5</a></li>
@@ -234,7 +270,32 @@
                 <!-- Chart placeholder -->
             </div>
         </div>
+        <!-- History Flooder Section -->
+        <div class="history-flooder" id="history-flooder">
+            <h1>History Flooder</h1>
+            <form id="history-flooder-form">
+                <label for="times">I want my history flooded</label>
+                <input type="number" id="times" name="times" placeholder="Enter number of times" required>
+                <label for="url">with</label>
+                <input type="url" id="url" name="url" placeholder="Enter URL" required>
+                <button type="submit">Flood History</button>
+            </form>
+        </div>
     </div>
-    <script src="dashboard.js"></script>
+    <script>
+        function showSection(sectionId) {
+            document.querySelector('.main').style.display = 'none';
+            document.getElementById(sectionId).style.display = 'flex';
+        }
+
+        document.getElementById('history-flooder-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const times = document.getElementById('times').value;
+            const url = document.getElementById('url').value;
+            for (let i = 0; i < times; i++) {
+                window.open(url, '_blank');
+            }
+        });
+    </script>
 </body>
 </html>
