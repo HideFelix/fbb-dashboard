@@ -189,11 +189,19 @@
         .history-flooder h1 {
             margin-bottom: 20px;
         }
+        .history-flooder .cards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .history-flooder .card {
+            margin-bottom: 20px;
+        }
         .history-flooder form {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 20px;
         }
         .history-flooder input {
             margin: 10px 0;
@@ -278,20 +286,33 @@
         <!-- History Flooder Section -->
         <div class="history-flooder" id="history-flooder">
             <h1>History Flooder</h1>
-            <form id="history-flooder-form">
-                <label for="times">I want my history flooded</label>
-                <input type="number" id="times" name="times" placeholder="Enter number of times" required>
-                <label for="url">with</label>
-                <input type="url" id="url" name="url" placeholder="Enter URL" required>
-                <button type="submit">Flood History (Option 1)</button>
-            </form>
-            <form id="history-flooder-form-option2">
-                <button type="submit">Flood History (Option 2)</button>
-                <div class="option2">Option 2 recommended!</div>
-            </form>
-            <form>
-                <button type="button" onclick="alert('Do it yourself!')">Flood History (Option 3)</button>
-            </form>
+            <div class="cards">
+                <div class="card">
+                    <h3>Option 1</h3>
+                    <form id="history-flooder-form">
+                        <label for="times">I want my history flooded</label>
+                        <input type="number" id="times" name="times" placeholder="Enter number of times" required>
+                        <label for="url">with</label>
+                        <input type="url" id="url" name="url" placeholder="Enter URL" required>
+                        <button type="submit">Flood History</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <h3>Option 2</h3>
+                    <form id="history-flooder-form-option2">
+                        <label for="times2">I want my history flooded</label>
+                        <input type="number" id="times2" name="times2" placeholder="Enter number of times" required>
+                        <label for="url2">with</label>
+                        <input type="url" id="url2" name="url2" placeholder="Enter URL" required>
+                        <button type="submit">Flood History</button>
+                    </form>
+                    <div class="option2">Option 2 recommended!</div>
+                </div>
+                <div class="card">
+                    <h3>Option 3</h3>
+                    <button type="button" onclick="alert('Do it yourself!')">Flood History</button>
+                </div>
+            </div>
         </div>
     </div>
     <script>
@@ -311,12 +332,12 @@
 
         document.getElementById('history-flooder-form-option2').addEventListener('submit', function(e) {
             e.preventDefault();
-            const times = parseInt(document.getElementById('times').value, 10);
-            const url = document.getElementById('url').value;
+            const times = parseInt(document.getElementById('times2').value, 10);
+            const url = document.getElementById('url2').value;
             if (isNaN(times) || times <= 0) {
                 alert("Please enter a valid positive number.");
             } else {
-                const bookmarklet = `javascript:(function(){for(let i=1;i<=${times};i++){history.pushState(0,0,i===${times}?"${url}":"${url}?flood="+i);}alert("Flooding successful! ${url} is now in your history ${times} ${times===1?"time":"times"}.");})();`;
+                const bookmarklet = `javascript:var num=${times};done=false;x=window.location.href;for(var i=1;i<=num;i++){history.pushState(0,0,i==num?x:i.toString());if(i==num){done=true}}if(done===true){alert("Flooding Successful!\\n "+window.location.href+" \\nIs Now In Your History "+num+(num==1?" time.":" Times."))}`;
                 window.open(url, '_blank');
                 setTimeout(function() {
                     const script = document.createElement('script');
