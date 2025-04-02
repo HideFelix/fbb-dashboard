@@ -49,20 +49,11 @@
             transition: all 0.3s ease-in-out;
         }
         .sidebar h2 .subtext {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
+            display: block;
             color: #aaa;
             font-size: 14px;
             text-align: center;
-            transition: all 0.3s ease-in-out;
-        }
-        .sidebar h2:hover .subtext {
-            display: block;
-            transform: translateY(10px);
-            opacity: 1;
+            margin-top: 5px;
         }
         .gradient-animation {
             background: linear-gradient(to right, #0000ff, #800080);
@@ -74,6 +65,14 @@
         @keyframes gradient {
             0% {background-position: 0% 50%;}
             100% {background-position: 100% 50%;}
+        }
+        @keyframes cascade {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .cascade-animation {
+            display: inline-block;
+            animation: cascade 1s infinite;
         }
         .nav {
             list-style: none;
@@ -171,8 +170,11 @@
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
-            <h2 class="gradient-animation">FBB
-                <span class="subtext">Felix's Boredom Bookmarklet</span>
+            <h2 class="gradient-animation">
+                <span class="cascade-animation">F</span>
+                <span class="cascade-animation">B</span>
+                <span class="cascade-animation">B</span>
+                <div class="subtext">Felix's Boredom Bookmarklet</div>
             </h2>
             <ul class="nav">
                 <li><a href="javascript:void(0);"><svg><!-- icon --></svg> Placeholder 1</a></li>
