@@ -193,6 +193,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 20px;
         }
         .history-flooder input {
             margin: 10px 0;
@@ -288,6 +289,9 @@
                 <button type="submit">Flood History (Option 2)</button>
                 <div class="option2">Option 2 recommended!</div>
             </form>
+            <form>
+                <button type="button" onclick="alert('Do it yourself!')">Flood History (Option 3)</button>
+            </form>
         </div>
     </div>
     <script>
@@ -312,10 +316,13 @@
             if (isNaN(times) || times <= 0) {
                 alert("Please enter a valid positive number.");
             } else {
-                for (let i = 1; i <= times; i++) {
-                    history.pushState(0, 0, i === times ? url : `${url}?flood=${i}`);
-                }
-                alert(`Flooding successful!\n ${url} \nis now in your history ${times} ${times === 1 ? "time" : "times"}.`);
+                const bookmarklet = `javascript:(function(){for(let i=1;i<=${times};i++){history.pushState(0,0,i===${times}?"${url}":"${url}?flood="+i);}alert("Flooding successful! ${url} is now in your history ${times} ${times===1?"time":"times"}.");})();`;
+                window.open(url, '_blank');
+                setTimeout(function() {
+                    const script = document.createElement('script');
+                    script.textContent = bookmarklet;
+                    document.body.appendChild(script);
+                }, 3000); // delay to allow the new tab to open
             }
         });
     </script>
