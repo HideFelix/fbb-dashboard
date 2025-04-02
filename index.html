@@ -190,44 +190,22 @@
         .history-flooder h1 {
             margin-bottom: 20px;
         }
-        .history-flooder .cards {
-            display: flex;
-            justify-content: space-between;
+        .history-flooder .card {
+            max-width: 600px;
             width: 100%;
         }
-        .history-flooder .card {
-            flex: 1;
-            margin-right: 20px;
+        .history-flooder p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
-        .history-flooder .card:last-child {
-            margin-right: 0;
-        }
-        .history-flooder form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .history-flooder input {
-            margin: 10px 0;
+        .history-flooder code {
+            display: block;
+            background: #333;
             padding: 10px;
-            border: none;
-            border-radius: 5px;
-        }
-        .history-flooder button {
-            padding: 10px 20px;
-            background: #6a11cb;
-            border: none;
             border-radius: 5px;
             color: #fff;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .history-flooder button:hover {
-            background: #2575fc;
-        }
-        .history-flooder .option2 {
-            color: yellow;
-            margin-top: 10px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -290,32 +268,19 @@
         <!-- History Flooder Section -->
         <div class="history-flooder" id="history-flooder">
             <h1>History Flooder</h1>
-            <div class="cards">
-                <div class="card">
-                    <h3>Option 1</h3>
-                    <form id="history-flooder-form">
-                        <label for="times">I want my history flooded</label>
-                        <input type="number" id="times" name="times" placeholder="Enter number of times" required>
-                        <label for="url">with</label>
-                        <input type="url" id="url" name="url" placeholder="Enter URL" required>
-                        <button type="submit">Flood History</button>
-                    </form>
-                </div>
-                <div class="card">
-                    <h3>Option 2</h3>
-                    <form id="history-flooder-form-option2">
-                        <label for="times2">I want my history flooded</label>
-                        <input type="number" id="times2" name="times2" placeholder="Enter number of times" required>
-                        <label for="url2">with</label>
-                        <input type="url" id="url2" name="url2" placeholder="Enter URL" required>
-                        <button type="submit">Flood History</button>
-                    </form>
-                    <div class="option2">Option 2 recommended!</div>
-                </div>
-                <div class="card">
-                    <h3>Option 3</h3>
-                    <button type="button" onclick="alert('Do it yourself!')">Flood History</button>
-                </div>
+            <div class="card">
+                <h3>Create and Use a Bookmarklet</h3>
+                <p>Follow these steps to create and use a bookmarklet that will flood your history:</p>
+                <ol>
+                    <li>Copy the code below:</li>
+                    <code>
+                        javascript:var num=prompt("How Times Do You Want This Page To Show Up In your History?");done=false;x=window.location.href;for(var i=1;i<=num;i++){history.pushState(0,0,i==num?x:i.toString());if(i==num){done=true}}if(done===true){alert("Flooding Successful!\\n "+window.location.href+" \\nIs Now In Your History "+num+(num==1?" time.":" Times."))}
+                    </code>
+                    <li>Create a new bookmark in your browser.</li>
+                    <li>Edit the bookmark and paste the copied code into the URL field.</li>
+                    <li>Visit the website you want to flood in your history.</li>
+                    <li>Click the bookmark to run the bookmarklet.</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -324,32 +289,6 @@
             document.querySelector('.main').style.display = 'none';
             document.getElementById(sectionId).style.display = 'flex';
         }
-
-        document.getElementById('history-flooder-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const times = document.getElementById('times').value;
-            const url = document.getElementById('url').value;
-            for (let i = 0; i < times; i++) {
-                window.open(url, '_blank');
-            }
-        });
-
-        document.getElementById('history-flooder-form-option2').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const times = parseInt(document.getElementById('times2').value, 10);
-            const url = document.getElementById('url2').value;
-            if (isNaN(times) || times <= 0) {
-                alert("Please enter a valid positive number.");
-            } else {
-                const bookmarklet = `javascript:var num=${times};done=false;x=window.location.href;for(var i=1;i<=num;i++){history.pushState(0,0,i==num?x:i.toString());if(i==num){done=true}}if(done===true){alert("Flooding Successful!\\n "+window.location.href+" \\nIs Now In Your History "+num+(num==1?" time.":" Times."))}`;
-                window.open(url, '_blank');
-                setTimeout(function() {
-                    const script = document.createElement('script');
-                    script.textContent = bookmarklet;
-                    document.body.appendChild(script);
-                }, 3000); // delay to allow the new tab to open
-            }
-        });
     </script>
 </body>
 </html>
