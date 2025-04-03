@@ -14,49 +14,26 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(to bottom, #8B0000, #660000);
+            background: url('https://media.discordapp.net/attachments/1356716030856134736/1357244222415179898/Gky3Fiiddd3ysu49rb_static.png?ex=67ef7faf&is=67ee2e2f&hm=f05f557232ec31f0a443eb0ce13889bce38b87fea78bbaaf263ea16f3d3cb018&=&format=webp&quality=lossless&width=1920&height=1080') no-repeat center center fixed;
+            background-size: cover;
             color: #fff;
             overflow: hidden;
-        }
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: float 20s linear infinite;
-        }
-        @keyframes float {
-            from {
-                transform: translateY(0) translateX(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateY(-50vh) translateX(25vw);
-                opacity: 1;
-            }
         }
         .container {
             display: flex;
             height: 90vh;
             width: 90vw;
-            background: #3A3A3A;
+            background: rgba(58, 58, 58, 0.9);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             z-index: 2;
+            backdrop-filter: blur(10px);
         }
         /* Sidebar Styles */
         .sidebar {
             width: 250px;
-            background: #111;
+            background: rgba(17, 17, 17, 0.9);
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -117,7 +94,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #3A3A3A;
+            background: rgba(58, 58, 58, 0.9);
             padding: 10px 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -126,7 +103,7 @@
             margin: 0;
         }
         .header .search {
-            background: #3A3A3A;
+            background: rgba(58, 58, 58, 0.9);
             padding: 5px 10px;
             border-radius: 5px;
             display: flex;
@@ -147,7 +124,7 @@
             margin-top: 20px;
         }
         .card {
-            background: #3A3A3A;
+            background: rgba(58, 58, 58, 0.9);
             padding: 20px;
             border-radius: 10px;
             flex: 1 1 calc(50% - 20px);
@@ -168,7 +145,7 @@
         }
         .chart {
             margin-top: 20px;
-            background: #3A3A3A;
+            background: rgba(58, 58, 58, 0.9);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -187,7 +164,7 @@
             height: 100%;
             width: 100%;
             padding: 20px;
-            background: #3A3A3A;
+            background: rgba(58, 58, 58, 0.9);
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
@@ -235,22 +212,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="particles">
-        <!-- Generate particles -->
-        <script>
-            for (let i = 0; i < 200; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.width = `${Math.random() * 5 + 2}px`;
-                particle.style.height = `${Math.random() * 5 + 2}px`;
-                particle.style.top = `${Math.random() * 100}vh`;
-                particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                document.querySelector('.particles').appendChild(particle);
-            }
-        </script>
-    </div>
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
