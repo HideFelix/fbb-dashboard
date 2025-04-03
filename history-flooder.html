@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Flooder</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://www.icegif.com/wp-content/uploads/2023/04/icegif-831.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            height: 90vh;
+            width: 90vw;
+            background: rgba(58, 58, 58, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .history-flooder h1 {
+            margin-bottom: 20px;
+        }
+        .history-flooder .card {
+            max-width: 600px;
+            width: 100%;
+        }
+        .history-flooder p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .history-flooder code {
+            display: block;
+            background: #333;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .accent-btn {
+            background: #FFD700;
+            color: #1B1B1B;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .accent-btn:hover {
+            background: #FFC700;
+        }
+        .accent-link {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .accent-link:hover {
+            color: #FFC700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container history-flooder">
+        <h1>History Flooder</h1>
+        <div class="card">
+            <h3>Create and Use a Bookmarklet</h3>
+            <p>Follow these steps to create and use a bookmarklet that will flood your history:</p>
+            <ol>
+                <li>Copy the code below:</li>
+                <code>
+                    javascript:var num=prompt("How Times Do You Want This Page To Show Up In your History?");done=false;x=window.location.href;for(var i=1;i<=num;i++){history.pushState(0,0,i==[...]
+                </code>
+                <li>Create a new bookmark in your browser.</li>
+                <li>Edit the bookmark and paste the copied code into the URL field.</li>
+                <li>Visit the website you want to flood in your history.</li>
+                <li>Click the bookmark to run the bookmarklet.</li>
+            </ol>
+            <p>If you need additional help, watch the video tutorial <a href="https://www.youtube.com/watch?v=FCjNMBw3KLs" class="accent-link" target="_blank">here</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
