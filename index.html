@@ -14,17 +14,44 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: #ff0000;
+            background: linear-gradient(to bottom, #ffcccc, #660000);
             color: #fff;
+            overflow: hidden;
+        }
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: fly 10s linear infinite;
+        }
+        @keyframes fly {
+            from {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-200vh) translateX(100vw);
+                opacity: 0;
+            }
         }
         .container {
             display: flex;
             height: 90vh;
             width: 90vw;
-            background: #1e1e2d;
+            background: #3A3A3A;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2;
         }
         /* Sidebar Styles */
         .sidebar {
@@ -119,7 +146,7 @@
             margin-top: 20px;
         }
         .card {
-            background: #2a2a3d;
+            background: #3A3A3A;
             padding: 20px;
             border-radius: 10px;
             flex: 1;
@@ -144,7 +171,7 @@
         }
         .chart {
             margin-top: 20px;
-            background: #2a2a3d;
+            background: #3A3A3A;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -163,7 +190,7 @@
             height: 100%;
             width: 100%;
             padding: 20px;
-            background: #2a2a3d;
+            background: #3A3A3A;
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
@@ -187,9 +214,46 @@
             color: #fff;
             margin-bottom: 20px;
         }
+        .accent-btn {
+            background: #FFD700;
+            color: #1B1B1B;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .accent-btn:hover {
+            background: #FFC700;
+        }
+        .accent-link {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .accent-link:hover {
+            color: #FFC700;
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <div class="particles">
+        <!-- Generate particles -->
+        <script>
+            for (let i = 0; i < 100; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = `${Math.random() * 5 + 2}px`;
+                particle.style.height = `${Math.random() * 5 + 2}px`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                document.querySelector('.particles').appendChild(particle);
+            }
+        </script>
+    </div>
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
@@ -241,8 +305,8 @@
             </div>
             <!-- Chart Section -->
             <div class="chart">
-                <h3>Placeholder Chart</h3>
-                <!-- Chart placeholder -->
+                <h3>User Activity (Last 7 Days)</h3>
+                <canvas id="activityChart"></canvas>
             </div>
         </div>
         <!-- History Flooder Section -->
@@ -261,7 +325,7 @@
                     <li>Visit the website you want to flood in your history.</li>
                     <li>Click the bookmark to run the bookmarklet.</li>
                 </ol>
-                <p>If you need additional help, watch the video tutorial <a href="https://www.youtube.com/watch?v=FCjNMBw3KLs" target="_blank">here</a>.</p>
+                <p>If you need additional help, watch the video tutorial <a href="https://www.youtube.com/watch?v=FCjNMBw3KLs" class="accent-link" target="_blank">here</a>.</p>
             </div>
         </div>
     </div>
@@ -270,6 +334,65 @@
             document.querySelector('.main').style.display = 'none';
             document.getElementById(sectionId).style.display = 'flex';
         }
+
+        // Chart.js configuration
+        const ctx = document.getElementById('activityChart').getContext('2d');
+        const activityChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+                datasets: [{
+                    label: 'User Activity',
+                    data: [50, 40, 60, 70, 50, 80, 100],
+                    borderColor: '#00FFFF',
+                    backgroundColor: 'rgba(0, 255, 255, 0.1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#00FFFF',
+                    pointBorderColor: '#00FFFF',
+                    pointHoverBackgroundColor: '#00FFFF',
+                    pointHoverBorderColor: '#00FFFF'
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Days',
+                            color: '#ffffff',
+                            font: {
+                                family: 'Roboto',
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.2)'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Hours',
+                            color: '#ffffff',
+                            font: {
+                                family: 'Roboto',
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.2)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
     </script>
 </body>
 </html>
