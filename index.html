@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(to bottom, #ffcccc, #660000);
+            background: linear-gradient(to bottom, #8B0000, #660000);
             color: #fff;
             overflow: hidden;
         }
@@ -31,16 +31,16 @@
             position: absolute;
             background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            animation: fly 10s linear infinite;
+            animation: float 20s linear infinite;
         }
-        @keyframes fly {
+        @keyframes float {
             from {
                 transform: translateY(0) translateX(0);
                 opacity: 1;
             }
             to {
-                transform: translateY(-200vh) translateX(100vw);
-                opacity: 0;
+                transform: translateY(-50vh) translateX(25vw);
+                opacity: 1;
             }
         }
         .container {
@@ -176,6 +176,8 @@
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s, transform 0.3s;
+            width: 100%;
+            height: 100%;
         }
         .chart:hover {
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -241,14 +243,14 @@
     <div class="particles">
         <!-- Generate particles -->
         <script>
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 200; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.width = `${Math.random() * 5 + 2}px`;
                 particle.style.height = `${Math.random() * 5 + 2}px`;
                 particle.style.top = `${Math.random() * 100}vh`;
                 particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
                 particle.style.animationDelay = `${Math.random() * 5}s`;
                 document.querySelector('.particles').appendChild(particle);
             }
