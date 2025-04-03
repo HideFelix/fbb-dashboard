@@ -209,6 +209,14 @@
             color: #FFC700;
         }
     </style>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.main > div').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'flex';
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -259,24 +267,24 @@
                     <p>Placeholder Content 4</p>
                 </div>
             </div>
-        </div>
-        <!-- History Flooder Section -->
-        <div class="history-flooder" id="history-flooder">
-            <h1>History Flooder</h1>
-            <div class="card">
-                <h3>Create and Use a Bookmarklet</h3>
-                <p>Follow these steps to create and use a bookmarklet that will flood your history:</p>
-                <ol>
-                    <li>Copy the code below:</li>
-                    <code>
-                        javascript:var num=prompt("How Times Do You Want This Page To Show Up In your History?");done=false;x=window.location.href;for(var i=1;i<=num;i++){history.pushState(0,0,i==num?x:i.toString());if(i==num){done=true}}if(done===true){alert("Flooding Successful!\\n "+window.location.href+" \\nIs Now In Your History "+num+(num==1?" time.":" Times."))}
-                    </code>
-                    <li>Create a new bookmark in your browser.</li>
-                    <li>Edit the bookmark and paste the copied code into the URL field.</li>
-                    <li>Visit the website you want to flood in your history.</li>
-                    <li>Click the bookmark to run the bookmarklet.</li>
-                </ol>
-                <p>If you need additional help, watch the video tutorial <a href="https://www.youtube.com/watch?v=FCjNMBw3KLs" class="accent-link" target="_blank">here</a>.</p>
+            <!-- History Flooder Section -->
+            <div class="history-flooder" id="history-flooder">
+                <h1>History Flooder</h1>
+                <div class="card">
+                    <h3>Create and Use a Bookmarklet</h3>
+                    <p>Follow these steps to create and use a bookmarklet that will flood your history:</p>
+                    <ol>
+                        <li>Copy the code below:</li>
+                        <code>
+                            javascript:var num=prompt("How Times Do You Want This Page To Show Up In your History?");done=false;x=window.location.href;for(var i=1;i<=num;i++){history.pushState(0,0,i==num?x:i.toString());if(i==num){done=true}}if(done===true){alert("Flooding Successful!\\n "+window.location.href+" \\nIs Now In Your History "+num+(num==1?" time.":" Times."))}
+                        </code>
+                        <li>Create a new bookmark in your browser.</li>
+                        <li>Edit the bookmark and paste the copied code into the URL field.</li>
+                        <li>Visit the website you want to flood in your history.</li>
+                        <li>Click the bookmark to run the bookmarklet.</li>
+                    </ol>
+                    <p>If you need additional help, watch the video tutorial <a href="https://www.youtube.com/watch?v=FCjNMBw3KLs" class="accent-link" target="_blank">here</a>.</p>
+                </div>
             </div>
         </div>
     </div>
