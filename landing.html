@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            background: url('https://media.discordapp.net/attachments/1356716030856134736/1357247452025065574/standard_1.gif?ex=67ef82b1&is=67ee3131&hm=5d085e65b087f0e41826c44bfe0ab24420c3f41b141e7c6b9cf0c9e8edc0963a&=&width=1360&height=480') no-repeat center center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <script>
+        setTimeout(() => {
+            window.location.href = 'signup.html';
+        }, 5000); // Transition after 5 seconds
+    </script>
+</body>
+</html>
