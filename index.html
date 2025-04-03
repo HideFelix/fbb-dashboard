@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Dashboard</title>
+    <title>Felix's Den</title>
     <style>
         /* Global Styles */
         body {
@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: #ff0000;
             color: #fff;
         }
         .container {
@@ -38,16 +38,15 @@
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
         }
         .sidebar h2 {
-            color: #fff;
             margin: 0 0 20px;
             position: relative;
             text-align: center;
             font-size: 32px;
             width: 100%;
-            background: linear-gradient(to right, #0000ff, #800080);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: all 0.3s ease-in-out;
+        }
+        .sidebar h2 img {
+            max-width: 100%;
+            border-radius: 10px;
         }
         .sidebar h2 .subtext {
             display: block;
@@ -55,25 +54,6 @@
             font-size: 14px;
             text-align: center;
             margin-top: 5px;
-        }
-        .gradient-animation {
-            background: linear-gradient(to right, #0000ff, #800080);
-            background-size: 200% auto;
-            animation: gradient 3s linear infinite;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        @keyframes gradient {
-            0% {background-position: 0% 50%;}
-            100% {background-position: 100% 50%;}
-        }
-        @keyframes cascade {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .cascade-animation {
-            display: inline-block;
-            animation: cascade 1s infinite;
         }
         .nav {
             list-style: none;
@@ -214,8 +194,8 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <h2>
-                <span class="gradient-animation cascade-animation">FBB</span>
-                <div class="subtext">Felix's Boredom Bookmarklet</div>
+                <img src="https://media.discordapp.net/attachments/1356716030856134736/1357152594749034727/standard.gif?ex=67ef2a59&is=67edd8d9&hm=653a79ee784d97b0801a9ce0bd7d179f07e27ca2977e9fb7f68ae08500871414&=&width=1920&height=1080" alt="Felix's Den">
+                <div class="subtext">Felix's Den</div>
             </h2>
             <ul class="nav">
                 <li><a href="https://hidefelix.github.io/fbb-dashboard/"><svg><!-- icon --></svg> Dashboard</a></li>
@@ -281,6 +261,7 @@
                     <li>Visit the website you want to flood in your history.</li>
                     <li>Click the bookmark to run the bookmarklet.</li>
                 </ol>
+                <p>If you need additional help, watch the video tutorial <a href="https://www.youtube.com/watch?v=FCjNMBw3KLs" target="_blank">here</a>.</p>
             </div>
         </div>
     </div>
